@@ -40,12 +40,9 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        image = pickedImage
-        dismiss(animated: true) {
-            self.performSegue(withIdentifier: "editImage", sender: self)
-        }
-
+        image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        dismiss(animated: true)
+        self.performSegue(withIdentifier: "editImage", sender: self)
         
     }
 }

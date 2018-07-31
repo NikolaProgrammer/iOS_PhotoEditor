@@ -16,4 +16,7 @@ class ImageFilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var effectName: UILabel!
     @IBOutlet weak var processingIndicator: UIActivityIndicatorView!
     
+    override func prepareForReuse() {
+        previewImageView.image = nil
+    }
 }

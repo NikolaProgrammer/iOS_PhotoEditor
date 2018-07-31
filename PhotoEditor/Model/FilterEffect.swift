@@ -19,6 +19,5 @@ extension FilterEffect: Equatable {
     static func == (lhs: FilterEffect, rhs: FilterEffect) -> Bool {
         return lhs.name == rhs.name
     }
-    
-    
+
 }

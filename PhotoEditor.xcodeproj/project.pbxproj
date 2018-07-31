@@ -14,6 +14,7 @@
 		91BA90162105FB7500E8084B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BA90142105FB7500E8084B /* LaunchScreen.storyboard */; };
 		91BA901E21060E7000E8084B /* ImageFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA901D21060E7000E8084B /* ImageFilterCollectionViewCell.swift */; };
 		91BA90202106105600E8084B /* FilterEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA901F2106105600E8084B /* FilterEffect.swift */; };
+		91BD85E2210F3CAF006E242F /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BD85E1210F3CAE006E242F /* FilterService.swift */; };
 		91D9D3F1210736AF0061D08F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D9D3F0210736AF0061D08F /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		91BA90172105FB7500E8084B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91BA901D21060E7000E8084B /* ImageFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		91BA901F2106105600E8084B /* FilterEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEffect.swift; sourceTree = "<group>"; };
+		91BD85E1210F3CAE006E242F /* FilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 		91D9D3F0210736AF0061D08F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,14 +64,23 @@
 			children = (
 				91BA900B2105FB7200E8084B /* AppDelegate.swift */,
 				91D9D3EF210711080061D08F /* Controllers */,
+				91BD85E3210F3EB4006E242F /* Helpers */,
 				91D9D3ED210710EA0061D08F /* Model */,
-				91D9D3EE210710F50061D08F /* Custom View */,
+				91D9D3EE210710F50061D08F /* View */,
 				91BA900F2105FB7200E8084B /* Main.storyboard */,
 				91BA90122105FB7500E8084B /* Assets.xcassets */,
 				91BA90142105FB7500E8084B /* LaunchScreen.storyboard */,
 				91BA90172105FB7500E8084B /* Info.plist */,
 			);
 			path = PhotoEditor;
+			sourceTree = "<group>";
+		};
+		91BD85E3210F3EB4006E242F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				91BD85E1210F3CAE006E242F /* FilterService.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		91D9D3ED210710EA0061D08F /* Model */ = {
@@ -80,12 +91,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		91D9D3EE210710F50061D08F /* Custom View */ = {
+		91D9D3EE210710F50061D08F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				91BA901D21060E7000E8084B /* ImageFilterCollectionViewCell.swift */,
 			);
-			path = "Custom View";
+			path = View;
 			sourceTree = "<group>";
 		};
 		91D9D3EF210711080061D08F /* Controllers */ = {
@@ -171,6 +182,7 @@
 				91BA90202106105600E8084B /* FilterEffect.swift in Sources */,
 				91BA900E2105FB7200E8084B /* PhotoEditorViewController.swift in Sources */,
 				91BA900C2105FB7200E8084B /* AppDelegate.swift in Sources */,
+				91BD85E2210F3CAF006E242F /* FilterService.swift in Sources */,
 				91BA901E21060E7000E8084B /* ImageFilterCollectionViewCell.swift in Sources */,
 				91D9D3F1210736AF0061D08F /* MainViewController.swift in Sources */,
 			);
