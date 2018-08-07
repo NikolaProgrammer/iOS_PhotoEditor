@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -82,12 +81,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k9T-U8-NIW">
                                                     <rect key="frame" x="0.0" y="0.0" width="129" height="133"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4a-hd-YFF">
-                                                    <rect key="frame" x="0.0" y="84.666666666666671" width="129" height="20.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uoh-ds-7vM">
                                                     <rect key="frame" x="46" y="48" width="37" height="37"/>
                                                     <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -97,16 +90,12 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="k9T-U8-NIW" secondAttribute="trailing" id="1w8-Vd-yR3"/>
                                             <constraint firstItem="k9T-U8-NIW" firstAttribute="leading" secondItem="bcO-Pw-ojL" secondAttribute="leading" id="22d-aN-2BX"/>
-                                            <constraint firstItem="m4a-hd-YFF" firstAttribute="leading" secondItem="bcO-Pw-ojL" secondAttribute="leading" id="BgG-sq-uMj"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="m4a-hd-YFF" secondAttribute="bottom" constant="20" id="NfD-XL-TnT"/>
                                             <constraint firstItem="k9T-U8-NIW" firstAttribute="top" secondItem="bcO-Pw-ojL" secondAttribute="top" id="bXQ-5J-xDr"/>
                                             <constraint firstAttribute="bottom" secondItem="k9T-U8-NIW" secondAttribute="bottom" id="dgX-iD-dMD"/>
                                             <constraint firstItem="uoh-ds-7vM" firstAttribute="centerY" secondItem="k9T-U8-NIW" secondAttribute="centerY" id="tjY-Wr-oz3"/>
                                             <constraint firstItem="uoh-ds-7vM" firstAttribute="centerX" secondItem="k9T-U8-NIW" secondAttribute="centerX" id="u3o-Ik-yPl"/>
-                                            <constraint firstAttribute="trailing" secondItem="m4a-hd-YFF" secondAttribute="trailing" id="unO-Kh-DuU"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="effectName" destination="m4a-hd-YFF" id="FY6-Ey-iGJ"/>
                                             <outlet property="previewImageView" destination="k9T-U8-NIW" id="LA4-hh-Ynd"/>
                                             <outlet property="processingIndicator" destination="uoh-ds-7vM" id="Nqo-Xa-TBQ"/>
                                         </connections>

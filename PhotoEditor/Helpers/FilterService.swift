@@ -9,41 +9,50 @@
 import UIKit
 import CoreImage
 
+enum FilterName: String {
+    case noir = "CIPhotoEffectNoir"
+    case sepia = "CISepiaTone"
+    case fade = "CIPhotoEffectFade"
+    case transfer = "CIPhotoEffectTransfer"
+    case blur = "CIGaussianBlur"
+    case hueAdjust = "CIHueAdjust"
+    
+    static let allCases: [FilterName] = [.noir, .sepia, .fade, .transfer, .blur, .hueAdjust]
+}
+
 class FilterService {
     
     //MARK: Properties
-    let filterNames = ["Noir", "Sepia Tone", "Fade", "Transfer", "Gaussian Blur", "Hue Adjust"]
-    
     private let filters: [FilterEffect] = [
-        FilterEffect(name: "CIPhotoEffectNoir", displayName: "Noir", effectValue: nil, effectValueName: nil),
-        FilterEffect(name: "CISepiaTone", displayName: "Sepia Tone", effectValue: 0.8, effectValueName: kCIInputIntensityKey),
-        FilterEffect(name: "CIPhotoEffectFade", displayName: "Fade", effectValue: nil, effectValueName: nil),
-        FilterEffect(name: "CIPhotoEffectTransfer", displayName: "Transfer", effectValue: nil, effectValueName: nil),
-        FilterEffect(name: "CIGaussianBlur", displayName: "Gaussian Blur", effectValue: 8.0, effectValueName: kCIInputRadiusKey),
-        FilterEffect(name: "CIHueAdjust", displayName: "Hue Adjust", effectValue: 2.0, effectValueName: kCIInputAngleKey)
+        FilterEffect(name: "CIPhotoEffectNoir", effectValue: nil, effectValueName: nil),
+        FilterEffect(name: "CISepiaTone", effectValue: 0.8, effectValueName: kCIInputIntensityKey),
+        FilterEffect(name: "CIPhotoEffectFade", effectValue: nil, effectValueName: nil),
+        FilterEffect(name: "CIPhotoEffectTransfer", effectValue: nil, effectValueName: nil),
+        FilterEffect(name: "CIGaussianBlur", effectValue: 8.0, effectValueName: kCIInputRadiusKey),
+        FilterEffect(name: "CIHueAdjust", effectValue: 2.0, effectValueName: kCIInputAngleKey)
     ]
     
     //MARK: Methods
-    func processImage(_ image: UIImage, filterName: String, completion: @escaping (UIImage) -> ()) {
-        
-        let context = CIContext(eaglContext: EAGLContext(api: .openGLES3)!)
-        let ciImage = CIImage(cgImage: image.cgImage!)
-        
-        guard let filterEffect = filters.first(where: { (filter) -> Bool in
-            filter.displayName == filterName
-        }) else {
-            print("Incorrect filter name")
-            return
-        }
-        let filter = CIFilter(name: filterEffect.name)
-        
-        filter?.setValue(ciImage, forKey: kCIInputImageKey)
-        
-        if let filterEffectValue = filterEffect.effectValue, let filterEffectValueName = filterEffect.effectValueName {
-            filter?.setValue(filterEffectValue, forKey: filterEffectValueName)
-        }
-        
-        DispatchQueue.global(qos: .userInitiated).async {
+    func processImage(_ image: UIImage, filterName: FilterName, completion: @escaping (UIImage) -> ()) {
+         DispatchQueue.global(qos: .userInitiated).async {
+            
+            let context = CIContext(options: nil)
+            let ciImage = CIImage(image: image)
+            
+            guard let filterEffect = self.filters.first(where: { (filter) -> Bool in
+                filter.name == filterName.rawValue
+            }) else {
+                print("Incorrect filter name")
+                return
+            }
+            let filter = CIFilter(name: filterEffect.name)
+            
+            filter?.setValue(ciImage, forKey: kCIInputImageKey)
+            
+            if let filterEffectValue = filterEffect.effectValue, let filterEffectValueName = filterEffect.effectValueName {
+                filter?.setValue(filterEffectValue, forKey: filterEffectValueName)
+            }
+
             if let outCIImage = filter?.value(forKey: kCIOutputImageKey) as? CIImage, let outputImage = context.createCGImage(outCIImage, from: outCIImage.extent) {
                 let filteredImage = UIImage(cgImage: outputImage)
                 DispatchQueue.main.async {

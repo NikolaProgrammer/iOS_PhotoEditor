@@ -23,7 +23,7 @@ class PhotoEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filteredImages = Array(repeating: nil, count: filterService.filterNames.count)
+        filteredImages = Array(repeating: nil, count: FilterName.allCases.count)
         
         editingImageView.image = imageForEditing
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
@@ -33,28 +33,25 @@ class PhotoEditorViewController: UIViewController {
     @objc private func saveButtonTapped() {
         UIImageWriteToSavedPhotosAlbum(editingImageView.image!, nil, nil, nil)
     }
-    
 }
 
 extension PhotoEditorViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterService.filterNames.count
+        return FilterName.allCases.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageFilter", for: indexPath) as! ImageFilterCollectionViewCell
-        let filterName = filterService.filterNames[indexPath.row]
-        
-        cell.effectName.text = filterName
-        
+        let filterName = FilterName.allCases[indexPath.row]
+
         if let filteredImage = filteredImages[indexPath.item] {
             cell.previewImageView.image = filteredImage
         } else {
             cell.processingIndicator.startAnimating()
-            filterService.processImage(imageForEditing, filterName: filterName) { (image) in
-                cell.previewImageView.image = image
-                self.filteredImages[indexPath.item] = image
+            filterService.processImage(imageForEditing, filterName: filterName) { (filteredImage) in
+                cell.previewImageView.image = filteredImage
+                self.filteredImages[indexPath.item] = filteredImage
                 cell.processingIndicator.stopAnimating()
             }
         }

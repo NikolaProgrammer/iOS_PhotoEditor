@@ -10,7 +10,6 @@ import Foundation
 
 struct FilterEffect {
     var name: String
-    var displayName: String
     var effectValue: Any?
     var effectValueName: String?
 }

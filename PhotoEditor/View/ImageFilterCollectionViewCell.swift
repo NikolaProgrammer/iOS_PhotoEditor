@@ -13,7 +13,6 @@ class ImageFilterCollectionViewCell: UICollectionViewCell {
     //MARK: Properties
     
     @IBOutlet weak var previewImageView: UIImageView!
-    @IBOutlet weak var effectName: UILabel!
     @IBOutlet weak var processingIndicator: UIActivityIndicatorView!
     
     override func prepareForReuse() {
